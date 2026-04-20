@@ -158,6 +158,28 @@ export default function App() {
 		return () => window.removeEventListener('keydown', handleGlobalKeyDown);
 	}, []);
 
+	useEffect(() => {
+		const lockFocus = () => {
+			if (inputRef.current && document.activeElement !== inputRef.current) {
+				inputRef.current.focus();
+			}
+		};
+
+		document.addEventListener("click", lockFocus);
+		
+		window.addEventListener("focus", lockFocus);
+
+		const intervalId = setInterval(lockFocus, 500);
+
+		lockFocus();
+
+		return () => {
+			document.removeEventListener("click", lockFocus);
+			window.removeEventListener("focus", lockFocus);
+			clearInterval(intervalId);
+		};
+	}, []);
+
 	return (
 		<div className="app-wrapper">
 			<div className="checkin-container">
