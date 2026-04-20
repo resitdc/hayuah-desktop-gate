@@ -12,18 +12,20 @@ import (
 var assets embed.FS
 
 func main() {
-	// Create an instance of the app structure
 	app := NewApp()
 
-	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "hayuah-desktop-gate",
+		Title:  "Hayuah Event Gate",
 		Width:  1024,
 		Height: 768,
+		
+		Fullscreen:  true,
+		AlwaysOnTop: true,
+		
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
-		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
+		BackgroundColour: &options.RGBA{R: 17, G: 17, B: 17, A: 255},
 		OnStartup:        app.startup,
 		Bind: []interface{}{
 			app,
