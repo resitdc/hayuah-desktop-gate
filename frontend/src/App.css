@@ -217,3 +217,94 @@ p.subtitle {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.btn-quit {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid #444;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.btn-quit:hover {
+  background-color: var(--error);
+  color: white;
+  border-color: var(--error);
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
+}
+
+.vip-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Pastikan selalu di atas segalanya */
+  animation: fadeInVip 0.3s ease-out;
+}
+
+.vip-card {
+  background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+  color: #111;
+  padding: 50px 40px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 0 80px rgba(255, 215, 0, 0.6);
+  max-width: 500px;
+  width: 90%;
+  transform: scale(0.9);
+  animation: popInVip 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  border: 4px solid #FFF8DC;
+}
+
+.vip-badge {
+  font-size: 5rem;
+  margin-bottom: -10px;
+}
+
+.vip-card h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #000;
+}
+
+.vip-card h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.btn-vip-close {
+  background-color: #111;
+  color: #FFD700;
+  border: none;
+  padding: 16px 35px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.btn-vip-close:hover {
+  background-color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+}
+
+@keyframes fadeInVip { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popInVip { to { transform: scale(1); } }
