@@ -186,6 +186,7 @@ export default function App() {
 
       if (e.key === "Enter" && buffer.current.length > 2) {
         const finalBarcode = buffer.current.trim();
+				console.log("FINAL BARCODE ===>", finalBarcode);
 
         const isValidFormat = /^[a-zA-Z0-9]+$/.test(finalBarcode);
         if (!isValidFormat) {
