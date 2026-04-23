@@ -63,7 +63,8 @@ export default function App() {
   const processCheckIn = async (guestIdOrName: string, type: "SCAN" | "MANUAL") => {
     if (vipGuest !== null) return;
 
-    const val = guestIdOrName.trim();
+		const guestIds = guestIdOrName.trim().split("/");
+    const val = guestIds[guestIds.length - 1].trim();
     if (!val) {
       showAlert("Input is empty! Please scan or type manually.", "error");
       return;
@@ -98,9 +99,10 @@ export default function App() {
         }
       }
     } catch (error: any) {
-			console.log("ERROR ====>", error);
+			// console.log("ERROR ====>", JSON.stringify(error.response));
       const errorMessage = error.response?.data?.message || "An error occurred during check-in.";
       showAlert(errorMessage, "error");
+      // showAlert(JSON.stringify(error, null, 2), "error");
     } finally {
       setInputValue("");
       setIsProcessing(false);
@@ -150,7 +152,7 @@ export default function App() {
 
   const showAlert = (message: string, type: "success" | "error") => {
     setAlert({ show: true, message, type });
-    setTimeout(() => setAlert({ show: false, message: "", type: "success" }), 3500);
+    setTimeout(() => setAlert({ show: false, message: "", type: "success" }), 6500);
   };
 
   useEffect(() => {

@@ -3,7 +3,6 @@ import errorResponseHandler from "../../plugins/axios/errorResponseHandler";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
-  withCredentials: true,
 });
 
 axiosInstance.interceptors.response.use(
